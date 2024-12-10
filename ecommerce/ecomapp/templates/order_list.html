@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in order %}
+
+    <h2>{{i.pro_name}}</h2>
+      quantity:<p>{{i.quantity}}</p>
+      <p><img src="{{i.order_pic.url}}"></p>
+      ordered date<p>{{i.order.ordered_date}}</p>
+      price:<p>{{i.price}}</p>
+
+      {% if i.order_status %}
+
+       <p>order Status: <span class="ordered"><i class="fas fa-check-circle icon">Ordered</i></span></p>
+       <a href="/ecomapp/cancelorder/{{i.id}}">cancel order</a>
+
+       {% else %}
+         <p>order Status: <span class="cancelled"><i class="fas fa-times-circle icon">cancelled</i></span></p>
+
+      {% endif %}
+
+
+{% endfor %}
+
+</body>
+</html>

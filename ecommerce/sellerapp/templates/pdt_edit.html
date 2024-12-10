@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <label>Product Name:</label>
+    <input type="text" name="pdtname" value="{{data.pdtname}}"><br>
+    <label>Product Price</label>
+    <input type="number" name="pdtprice" value="{{data.pdtprice}}"><br>
+    <label>Image</label>
+    <img src="{{data.pdtimage.url}}" height="150px" width="150px">
+    <input type="file" name="pdtimage"><br>
+    <label>Available Size</label>
+    <input type="text" name="pdtsize" value="{{data.pdtsize}}"><br>
+    <label>Category</label>
+    <select name="category">
+        <option>--select category</option>
+        <option value="male"{% if data.category == 'male' %}selected{% endif %}>male</option>
+        <option value="female"{% if data.category == 'female' %}selected{% endif %}>female</option>
+        <option value="kids"{% if data.category == 'kids' %}selected{% endif %}>kids</option>
+    </select><br>
+    <label>Product Description</label>
+    <textarea name="pdtdesc">{{data.pdtdesc}}</textarea><br>
+    <input type="submit" value="update">
+
+
+</form>
+
+</body>
+</html>

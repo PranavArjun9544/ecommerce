@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Delivery details</h1>
+<form method="get" action="/ecomapp/summary/">{% csrf_token %}
+{% for i in data %}
+
+<input type="radio" name="address" value="{{i.id}}">
+{{i.address_line1}}
+{{i.address_line2}},
+{{i.city}},
+{{i.state}},
+{{i.contact_name}},
+{{i.contact_number}}
+<br><br>
+    <input type="submit" value="deliver_to this address"><br><br>
+
+{% endfor %}
+     </form>
+<a href="/ecomapp/addAddress/" class="btn btn-primary">Add Address</a>
+
+</body>
+</html>
